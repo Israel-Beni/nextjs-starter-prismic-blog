@@ -1,0 +1,27 @@
+{
+  "id": "navigation",
+  "label": "Navigation",
+  "format": "custom",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "menu_items": {
+        "type": "Group",
+        "config": {
+          "label": "Menu Items",
+          "fields": {
+            "menu_item": {
+              "type": "Link",
+              "config": {
+                "label": "Menu Item",
+                "select": "document",
+                "customtypes": ["menu_item"]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

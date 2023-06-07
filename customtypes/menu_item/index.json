@@ -1,0 +1,23 @@
+{
+  "id": "menu_item",
+  "label": "Menu Item",
+  "format": "custom",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "name": {
+        "type": "Text",
+        "config": { "label": "Name", "placeholder": "" }
+      },
+      "link": {
+        "type": "Link",
+        "config": {
+          "label": "Link",
+          "select": "document",
+          "customtypes": ["about", "contact_me", "articles"]
+        }
+      }
+    }
+  }
+}

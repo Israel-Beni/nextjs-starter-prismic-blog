@@ -1,0 +1,23 @@
+{
+  "id": "artice_listing",
+  "type": "SharedSlice",
+  "name": "ArticeListing",
+  "description": "ArticeListing",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "link_to_article": {
+          "type": "Link",
+          "config": { "label": "Link to Article", "select": "document" }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

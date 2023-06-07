@@ -1,0 +1,32 @@
+{
+  "id": "author",
+  "label": "Author",
+  "format": "custom",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "name": {
+        "type": "Text",
+        "config": { "label": "Name", "placeholder": "John Doe" }
+      },
+      "description": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Description",
+          "placeholder": "A short word about the author",
+          "allowTargetBlank": false,
+          "single": "paragraph"
+        }
+      },
+      "profile_image": {
+        "type": "Image",
+        "config": {
+          "label": "Profile Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      }
+    }
+  }
+}
