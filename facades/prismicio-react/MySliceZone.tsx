@@ -15,6 +15,7 @@ interface MySliceZoneProps {
 const MySliceZone: FC<MySliceZoneProps> = ({ components, context,  slices, ...restProps}) => {
     let finalComponents: Components;
     if (components) finalComponents = components;
+    else finalComponents = allComponents;
     return (
         <SliceZone slices={slices} components={finalComponents} context={context} {...restProps} />
     )

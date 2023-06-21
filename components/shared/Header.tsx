@@ -3,10 +3,11 @@ import Navigation from "./Navigation";
 
 import type { ReactChildrenNode } from "@/types";
 
-function Header({ children }: ReactChildrenNode): JSX.Element {
+function Header(): JSX.Element {
     return (
         <header className="header">
-            {children}
+            {/* @ts-expect-error Server Component */}
+            <Navigation />
         </header>
     )
 }

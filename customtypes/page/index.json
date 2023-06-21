@@ -1,11 +1,12 @@
 {
-  "id": "about",
-  "label": "About",
+  "id": "page",
+  "label": "Page",
   "format": "page",
-  "repeatable": false,
+  "repeatable": true,
   "status": true,
   "json": {
     "Main": {
+      "uid": { "config": { "label": "UID" }, "type": "UID" },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
