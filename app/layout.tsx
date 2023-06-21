@@ -1,4 +1,5 @@
 import './globals.css';
+import "@/assets/styles/index.scss";
 import { Inter } from 'next/font/google';
 import { Metadata } from 'next';
 import Header from '@/components/shared/Header';
