@@ -1,7 +1,7 @@
 // 'use client'
 
 import React from "react";
-import Link from "next/link";
+import styles from '@/assets/styles/components/navigation.module.scss';
 import { PrismicNextLink } from "@prismicio/next";
 import { createClient } from "@/prismicio";
 import { getMenu } from "@/api";
@@ -29,26 +29,28 @@ async function Navigation(): Promise<JSX.Element> {
       menu.data.menu_items.map((item) => menuItems.push(item.menu_item));
   };
 
+  setMenuItems();
+
+  console.log('menuItems', menuItems);
+
   const renderMenuItems = () => {
     if (menuItems.length > 0)
       return menuItems.map((menuItem, i) => {
         if ("data" in menuItem) {
           const data = menuItem.data as MenuItemData;
           return (
-            <li key={i}>
+            <li className={styles.list_item} key={i}>
               <PrismicNextLink field={data.link}>{data.name}</PrismicNextLink>
             </li>
           );
         }
       });
-    return <>There is no data</>;
+    return <></>;
   };
 
-  setMenuItems();
-
   return (
-    <nav className="nav_bar">
-      <ul className="nav_bar__list">{renderMenuItems()}</ul>
+    <nav className={styles.navigation}>
+      <ul className={styles.list}>{renderMenuItems()}</ul>
     </nav>
   );
 }

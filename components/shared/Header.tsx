@@ -7,8 +7,10 @@ import type { ReactChildrenNode } from "@/types";
 function Header(): JSX.Element {
     return (
         <header className={styles.header}>
-            {/* @ts-expect-error Server Component */}
-            <Navigation />
+            <div className={styles.container}>
+                {/* @ts-expect-error Server Component */}
+                <Navigation />
+            </div>
         </header>
     )
 }
