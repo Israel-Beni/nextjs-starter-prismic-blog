@@ -1,0 +1,19 @@
+.header {
+  padding: 3rem 1.5rem;
+
+  .container {
+    max-width: 48rem;
+    width: 100%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    justify-items: center;
+    gap: 5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .header {
+    padding: 2.5rem 1.5rem;
+  }
+}

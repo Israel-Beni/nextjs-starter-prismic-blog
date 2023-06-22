@@ -1,14 +1,12 @@
 import './globals.css';
 import "@/assets/styles/index.scss";
-import { Inter } from 'next/font/google';
+import { Inter } from '@next/font/google';
 import { Metadata } from 'next';
 import Header from '@/components/shared/Header';
-import Navigation from '@/components/shared/Navigation';
 
 import type { ReactChildrenNode } from '@/types';
 
 const inter = Inter({ subsets: ['latin']});
-
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -18,8 +16,8 @@ export const metadata: Metadata = {
 
 function RootLayout({ children }: ReactChildrenNode): JSX.Element {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className={inter.className}>
+      <body>
         <Header />
         <main>{children}</main>
       </body>
