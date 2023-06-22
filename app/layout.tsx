@@ -1,13 +1,12 @@
 import './globals.css';
 import "@/assets/styles/index.scss";
 import { Inter } from 'next/font/google';
+import { inter } from '@/utils/fonts';
 import { Metadata } from 'next';
 import Header from '@/components/shared/Header';
 import Navigation from '@/components/shared/Navigation';
 
 import type { ReactChildrenNode } from '@/types';
-
-const inter = Inter({ subsets: ['latin']});
 
 
 export const metadata: Metadata = {
