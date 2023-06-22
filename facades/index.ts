@@ -1,6 +1,6 @@
 import MySliceZone from "./prismicio-react/MySliceZone";
 import MyPrismicText from "./prismicio-react/MyPrismicText";
-import MyPrismicLink from "./prismicio-react/MyPrismicLink";
+import MyPrismicLink from "./prismicio-next/MyPrismicLink";
 
 import { createMyClient } from "./prismicio-client/createMyClient";
 
