@@ -20,21 +20,21 @@ type ReusableTypeDocument = Exclude<AllDocumentTypes, SingleTypeDocument>
  * @param structure The structure representing the expected interface.
  * @returns A boolean indicating whether the object matches the structure.
  */
-function checkObjectStructure<T>(obj: unknown, structure: T): obj is T {
-  if (typeof obj !== "object" || obj === null) return false;
+const checkObjectStructure = <T>(obj: unknown, structure: T): obj is T => {
+    if (typeof obj !== "object" || obj === null) return false;
 
-  for (const key in structure) {
-    if (!(key in obj)) return false;
+    for (const key in structure) {
+        if (!(key in obj)) return false;
 
-    const structureValue = structure[key];
-    const objValue = (obj as Record<string, unknown>)[key];
+        const structureValue = structure[key];
+        const objValue = (obj as Record<string, unknown>)[key];
 
-    if (typeof structureValue === "object" && structureValue !== null) {
-      if (!checkObjectStructure(objValue, structureValue)) return false;
+        if (typeof structureValue === "object" && structureValue !== null) {
+            if (!checkObjectStructure(objValue, structureValue)) return false;
+        }
     }
-  }
 
-  return true;
+    return true;
 }
 
 export type {
@@ -44,7 +44,8 @@ export type {
     // Types
     SingleTypeDocument,
     ReusableTypeDocument,
-
-    // Type guard functions
-    checkObjectStructure,
 };
+
+
+// Type guard functions
+export { checkObjectStructure }
