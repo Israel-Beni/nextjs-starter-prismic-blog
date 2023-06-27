@@ -1,11 +1,21 @@
 import React from 'react';
 import Link from 'next/link';
-import styles from '@/assets/styles/components/author.module.scss';
+import '@/assets/styles/components/author.module.scss';
 import { getSingleCustomType } from '@/api';
 import { MyPrismicText, MyPrismicLink, MyPrismicImage } from '@/facades';
 
 import { AuthorDocument } from '@/prismicio-types';
 import { SingleTypeDocument, checkObjectStructure } from '@/types';
+
+const styles = {
+    author: 'author',
+    container: 'container',
+    image_area: 'image_area',
+    image_wrapper: 'image_wrapper',
+    text_area: 'text_area',
+    name: 'name',
+    description: 'description',
+}
 
 async function Author(): Promise<JSX.Element> {
     const author: SingleTypeDocument  = await getSingleCustomType('author');
