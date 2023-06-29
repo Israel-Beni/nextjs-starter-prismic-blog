@@ -1,5 +1,6 @@
 import { Inter, Libre_Baskerville as LB } from "@next/font/google";
 
+
 export const inter = Inter({
     subsets: ['latin'],
     display: 'swap',
