@@ -6,6 +6,6 @@ const logKeyAndType = <T>(object: T): void => {
 
 const isObject = (object: unknown): boolean => {
   return typeof object === 'object' && object !== null && !Array.isArray(object) && object !== undefined;
-}
+};
 
 export { logKeyAndType, isObject };
