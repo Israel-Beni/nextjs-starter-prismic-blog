@@ -1,6 +1,4 @@
 
-@import '../utils/breakpoints';
-
 .author {
     padding: 0 1rem;
 
@@ -9,6 +7,7 @@
         max-width: 32rem;
         grid-template-columns: repeat(1, minmax(0, 1fr));
         justify-items: center;
+        gap: 2rem;
 
         .image_area {
             .image_wrapper {
@@ -20,10 +19,13 @@
                 background-color: #cbd5e1;
 
                 img {
+                    position: absolute;
                     width: 100%;
                     height: 100%;
                     max-width: 100%;
                     object-fit: cover;
+                    top: 0;
+                    left:0;
                 }
             }
         }
@@ -34,8 +36,19 @@
             gap: .5rem;
             text-align: center;
 
-            @include media("<=phone") {
-                color: blue;
+            .name {
+                font-size: 1.875rem;
+                line-height: 2.25rem;
+                font-weight: 600;
+                letter-spacing: -.05em;
+                color: #1e293b;
+            }
+
+            .description {
+                font-size: 1.5rem;
+                line-height: 1.5;
+                letter-spacing: -.025em;
+                color: #64748b;
             }
         }
     }
