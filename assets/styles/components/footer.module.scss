@@ -23,17 +23,6 @@
             grid-template-columns: repeat(1, minmax(0, 1fr));
             gap: 6rem;
 
-            .line {
-                width: 50%;
-                height: 1px;
-                border-width: 0;
-                background-color: #e2e8f0;
-
-                @include media('>=phone') {
-                    max-width: 24rem;
-                }
-            }
-
             .formWrapper {
                 padding-left: 1rem;
                 padding-right: 1rem;

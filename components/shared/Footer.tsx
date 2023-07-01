@@ -3,13 +3,14 @@ import styles from '@/assets/styles/components/footer.module.scss';
 import { MyPrismicText } from "@/facades";
 import { libre_baskerville } from "@/utils/fonts";
 import Link from "next/link";
+import Line from "../non-shared/Line";
 
 function Footer(): JSX.Element {
     return (
         <footer className={styles.footer}>
             <div className={styles.outerContainer}>
                 <div className={styles.innerContainer}>
-                    <hr className={styles.line} />
+                    <Line show />
                     <div className={styles.formWrapper}>
                         <form
                             action="/api/sign-up"

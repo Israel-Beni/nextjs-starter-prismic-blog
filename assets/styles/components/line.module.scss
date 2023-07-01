@@ -1,0 +1,12 @@
+@import "../utils/_breakpoints";
+
+.line {
+    width: 50%;
+    height: 1px;
+    border-width: 0;
+    background-color: #e2e8f0;
+
+    @include media('>=phone') {
+        max-width: 24rem;
+    }
+}
