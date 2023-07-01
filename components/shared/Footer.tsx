@@ -10,7 +10,7 @@ function Footer(): JSX.Element {
         <footer className={styles.footer}>
             <div className={styles.outerContainer}>
                 <div className={styles.innerContainer}>
-                    <Line />
+                    <Line show />
                     <div className={styles.formWrapper}>
                         <form
                             action="/api/sign-up"

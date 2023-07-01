@@ -11,6 +11,7 @@ export interface HeaderProps {
 }
 
 function Header({ params }: HeaderProps): JSX.Element {
+    console.log("params", params);
     return (
         <header className={styles.header}>
             <div className={styles.container}>
@@ -18,7 +19,7 @@ function Header({ params }: HeaderProps): JSX.Element {
                 <Navigation />
                 {/* @ts-expect-error Server Component */}
                 <Author />
-                {params.slug && (params.slug === "about" || params.slug === 'contact-me') && <Line />}
+                <Line />
             </div>
         </header>
     );
