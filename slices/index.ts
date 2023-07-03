@@ -4,4 +4,5 @@ import dynamic from "next/dynamic";
 
 export const components = {
   artice_listing: dynamic(() => import("./ArticeListing")),
+  paragraph: dynamic(() => import("./Paragraph")),
 };

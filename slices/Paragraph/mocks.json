@@ -1,0 +1,20 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Sunt id in labore nostrud. Cillum est anim qui aliquip minim nostrud excepteur commodo proident labore exercitation consectetur minim ut eiusmod."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
