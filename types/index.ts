@@ -19,6 +19,7 @@ type ReusableTypeDocument = Exclude<AllDocumentTypes, SingleTypeDocument>
  * @param obj The object to be checked.
  * @param structure The structure representing the expected interface.
  * @returns A boolean indicating whether the object matches the structure.
+ * @example checkObjectStructure<AuthorDocument>(author, {} as AuthorDocument)
  */
 const checkObjectStructure = <T>(obj: unknown, structure: T): obj is T => {
     if (typeof obj !== "object" || obj === null) return false;

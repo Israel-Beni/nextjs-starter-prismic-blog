@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "../assets/styles/pages/homepage.module.scss";
+import styles from "@/assets/styles/pages/homepage.module.scss";
 import { createMyClient } from "@/facades";
 import { logKeyAndType } from "@/utils";
 import { PageDocument } from "@/prismicio-types";

@@ -1,11 +1,12 @@
-import React, { FC } from 'react';
-import { PrismicNextLink } from '@prismicio/next';
+import React, { FC } from "react";
+import { PrismicNextLink } from "@prismicio/next";
 
-import type { LinkField } from '@prismicio/client';
+import type { LinkField } from "@prismicio/client";
+import type { PrismicNextLinkProps } from "@prismicio/next";
 
 interface MyPrismicLinkProps {
     field: LinkField;
-};
+}
 
 /**
  * MyPrismicLink Component
@@ -15,8 +16,24 @@ interface MyPrismicLinkProps {
  *
  * @component
  */
-function MyPrismicLink({field, ...restProps}: MyPrismicLinkProps ): JSX.Element {
-    return <PrismicNextLink field={field} {...restProps} />;
-}
+const MyPrismicLink: FC<PrismicNextLinkProps> = ({
+    field,
+    // document,
+    // href,
+    // linkResolver,
+    // rel,
+    ...restProps
+}) => {
+    return (
+        <PrismicNextLink
+            field={field}
+            // document={document}
+            // href={href}
+            // linkResolver={linkResolver}
+            // rel={rel}
+            {...restProps}
+        />
+    );
+};
 
 export default MyPrismicLink;

@@ -232,7 +232,7 @@ interface PageDocumentData {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = never;
+type PageDocumentDataSlicesSlice = ParagraphSlice;
 /**
  * Page document from Prismic
  *
@@ -296,6 +296,52 @@ export type ArticeListingSlice = prismic.SharedSlice<
   "artice_listing",
   ArticeListingSliceVariation
 >;
+/**
+ * Primary content in Paragraph → Primary
+ *
+ */
+interface ParagraphSliceDefaultPrimary {
+  /**
+   * Text field in *Paragraph → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Enter text
+   * - **API ID Path**: paragraph.primary.text
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  text: prismic.RichTextField;
+}
+/**
+ * Default variation for Paragraph Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ParagraphSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ParagraphSliceDefaultPrimary>,
+  never
+>;
+/**
+ * Slice variation for *Paragraph*
+ *
+ */
+type ParagraphSliceVariation = ParagraphSliceDefault;
+/**
+ * Paragraph Shared Slice
+ *
+ * - **API ID**: `paragraph`
+ * - **Description**: `Paragraph`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ParagraphSlice = prismic.SharedSlice<
+  "paragraph",
+  ParagraphSliceVariation
+>;
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -322,6 +368,10 @@ declare module "@prismicio/client" {
       ArticeListingSliceDefault,
       ArticeListingSliceVariation,
       ArticeListingSlice,
+      ParagraphSliceDefaultPrimary,
+      ParagraphSliceDefault,
+      ParagraphSliceVariation,
+      ParagraphSlice,
     };
   }
 }

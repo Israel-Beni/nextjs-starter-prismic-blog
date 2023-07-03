@@ -1,0 +1,28 @@
+{
+  "id": "paragraph",
+  "type": "SharedSlice",
+  "name": "Paragraph",
+  "description": "Paragraph",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "text": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Text",
+            "placeholder": "Enter text",
+            "allowTargetBlank": true,
+            "single": "paragraph,strong,em,hyperlink,embed,list-item,o-list-item,rtl"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
