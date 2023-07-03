@@ -1,11 +1,9 @@
-import React, { FC } from 'react';
-import { PrismicRichText } from '@prismicio/react';
+import React, { FC } from "react";
+import { PrismicRichText } from "@prismicio/react";
 
-import type { RichTextField } from '@prismicio/client';
-
-interface MyPrismicRichTextProps {
-    field: RichTextField;
-};
+import type { RichTextField } from "@prismicio/client";
+import type { PrismicRichTextProps } from "@prismicio/react";
+import { ReactChildrenNode } from "@/types";
 
 /**
  * MyPrismicRichText Component
@@ -15,8 +13,12 @@ interface MyPrismicRichTextProps {
  *
  * @component
  */
-function MyPrismicRichText({field, ...restProps}: MyPrismicRichTextProps ): JSX.Element {
-    return <PrismicRichText field={field} {...restProps} />;
+function MyPrismicRichText({
+    field,
+    components,
+    ...restProps
+}: PrismicRichTextProps): JSX.Element {
+    return <PrismicRichText field={field} components={components} {...restProps} />;
 }
 
 export default MyPrismicRichText;
