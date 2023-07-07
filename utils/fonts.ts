@@ -8,7 +8,7 @@ export const inter = Inter({
 
 export const libre_baskerville = LB({
     weight: '400',
-    style: 'italic',
+    style: ['italic', 'normal'],
     subsets: ['latin'],
     display: 'swap',
 });
