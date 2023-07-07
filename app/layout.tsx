@@ -15,19 +15,21 @@ export const metadata: Metadata = {
 };
 
 interface RootLayoutProps {
-  params: {
-    slug: string;
-  };
-  children: ReactChildrenNode['children'];
+    params: {
+        slug: string;
+    };
+    children: ReactChildrenNode["children"];
 }
 
 function RootLayout({ params, children }: RootLayoutProps): JSX.Element {
     return (
         <html lang="en" className={inter.className}>
             <body>
-                <Header params={params} />
-                <main>{children}</main>
-                <Footer />
+                <div style={{ color: "#334155" }}>
+                    <Header params={params} />
+                    <main>{children}</main>
+                    <Footer />
+                </div>
             </body>
         </html>
     );

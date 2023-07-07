@@ -46,6 +46,7 @@
         }
 
         .publishDate {
+            font-style: italic;
             letter-spacing: -0.05em;
             color: #64748b;
         }
@@ -56,7 +57,7 @@
 
             @media (min-width: 768px) {
                 font-size: 1.125rem;
-                line-height: 1.75rem;
+                // line-height: 1.75rem;
                 line-height: 1.625;
             }
 

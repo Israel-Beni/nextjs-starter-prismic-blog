@@ -38,10 +38,10 @@ function ArticleListing(): JSX.Element {
                     </Link>
                 </h2>
                 <p className={`${libre_baskerville.className} ${styles.publishDate}`}>Apr 12, 2022</p>
-                <p className={`${libre_baskerville.className}  ${styles.description}`}>
+                <p className={`${libre_baskerville.className} ${styles.description}`}>
                     This is Rich Text, which includes both external links and
                     links to internal documents. Links should be handled
-                    intelligently or everything might break. Don&lsquo;t forget
+                    intelligently or everything might break. Don&#39;t forget
                     about media, too! Do your best to render images using an
                     HTML Serializer. As you know hiking can be a very fulfilling
                     orem ipsum dolor…
