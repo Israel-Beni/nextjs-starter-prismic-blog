@@ -1,7 +1,7 @@
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import styles from "@/assets/styles/components/titleBlock.module.scss";
-import { MyPrismicRichText, MyPrismicText } from "@/facades";
+import {  MyPrismicText } from "@/facades";
 import { libre_baskerville as lb } from "@/utils/fonts";
 
 /**

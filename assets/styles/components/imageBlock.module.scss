@@ -1,0 +1,50 @@
+.imageBlock {
+    padding: 2rem 1rem;
+
+    @media (min-width: 768px) {
+        padding: 2.5rem 1.5rem;
+    }
+
+    @media (min-width: 1024px) {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .outerContainer {
+        width: 100%;
+        max-width: 72rem;
+        margin: auto;
+
+        .innerContainer {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 1rem;
+
+            .imageWrapper {
+                background-color: #F3F4F6;
+
+                img {
+                    width: 100%;
+                    max-width: 100%;
+                    height: auto;
+                    vertical-align: middle;
+                }
+            }
+
+            .captionWrapper {
+                font-style: italic;
+                letter-spacing: -0.025em;
+                text-align: center;
+                color: #64748b;
+
+                .captionText {
+                    margin-bottom: 1.75rem;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}

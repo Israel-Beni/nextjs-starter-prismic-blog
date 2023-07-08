@@ -314,6 +314,16 @@ interface ImageBlockSliceDefaultPrimary {
    *
    */
   image: prismic.ImageField<never>;
+  /**
+   * Caption field in *ImageBlock → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_block.primary.caption
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  caption: prismic.KeyTextField;
 }
 /**
  * Default variation for ImageBlock Slice

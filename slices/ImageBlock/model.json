@@ -15,6 +15,10 @@
         "image": {
           "type": "Image",
           "config": { "label": "Image", "constraint": {}, "thumbnails": [] }
+        },
+        "caption": {
+          "type": "Text",
+          "config": { "label": "Caption", "placeholder": "" }
         }
       },
       "items": {}
