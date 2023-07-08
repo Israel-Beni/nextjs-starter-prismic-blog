@@ -300,6 +300,36 @@ export type ArticeListingSlice = prismic.SharedSlice<
   ArticeListingSliceVariation
 >;
 /**
+ * Default variation for ContactForm Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ContactFormSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+/**
+ * Slice variation for *ContactForm*
+ *
+ */
+type ContactFormSliceVariation = ContactFormSliceDefault;
+/**
+ * ContactForm Shared Slice
+ *
+ * - **API ID**: `contact_form`
+ * - **Description**: `ContactForm`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ContactFormSlice = prismic.SharedSlice<
+  "contact_form",
+  ContactFormSliceVariation
+>;
+/**
  * Primary content in ImageBlock → Primary
  *
  */
@@ -473,6 +503,9 @@ declare module "@prismicio/client" {
       ArticeListingSliceDefault,
       ArticeListingSliceVariation,
       ArticeListingSlice,
+      ContactFormSliceDefault,
+      ContactFormSliceVariation,
+      ContactFormSlice,
       ImageBlockSliceDefaultPrimary,
       ImageBlockSliceDefault,
       ImageBlockSliceVariation,
