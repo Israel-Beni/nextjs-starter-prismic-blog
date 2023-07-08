@@ -1,0 +1,25 @@
+.titleBlock {
+    padding: 2rem 1rem;
+
+    @media (min-width: 768px) {
+        padding: 2.5rem 1.5rem;
+    }
+
+    @media (min-width: 1024px) {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .outerContainer {
+        width: 100%;
+        max-width: 56rem;
+        margin: auto;
+
+        .innerContainer {
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+            font-style: italic;
+            line-height: 1.625;
+        }
+    }
+}

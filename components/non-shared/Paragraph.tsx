@@ -4,7 +4,7 @@ import { libre_baskerville } from "@/utils/fonts";
 
 function Paragraph(): JSX.Element {
     return (
-        <section className={styles.paragraph}>
+        <section className={styles.paragraph} >
             <div className={styles.outerContainer}>
                 <div className={`${libre_baskerville.className} ${styles.innerContainer}`}>
                     <p className={styles.text}>

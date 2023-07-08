@@ -232,7 +232,10 @@ interface PageDocumentData {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = ParagraphSlice;
+type PageDocumentDataSlicesSlice =
+  | ParagraphSlice
+  | TitleBlockSlice
+  | ImageBlockSlice;
 /**
  * Page document from Prismic
  *
@@ -297,6 +300,52 @@ export type ArticeListingSlice = prismic.SharedSlice<
   ArticeListingSliceVariation
 >;
 /**
+ * Primary content in ImageBlock → Primary
+ *
+ */
+interface ImageBlockSliceDefaultPrimary {
+  /**
+   * Image field in *ImageBlock → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_block.primary.image
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  image: prismic.ImageField<never>;
+}
+/**
+ * Default variation for ImageBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ImageBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ImageBlockSliceDefaultPrimary>,
+  never
+>;
+/**
+ * Slice variation for *ImageBlock*
+ *
+ */
+type ImageBlockSliceVariation = ImageBlockSliceDefault;
+/**
+ * ImageBlock Shared Slice
+ *
+ * - **API ID**: `image_block`
+ * - **Description**: `ImageBlock`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ImageBlockSlice = prismic.SharedSlice<
+  "image_block",
+  ImageBlockSliceVariation
+>;
+/**
  * Primary content in Paragraph → Primary
  *
  */
@@ -342,6 +391,52 @@ export type ParagraphSlice = prismic.SharedSlice<
   "paragraph",
   ParagraphSliceVariation
 >;
+/**
+ * Primary content in TitleBlock → Primary
+ *
+ */
+interface TitleBlockSliceDefaultPrimary {
+  /**
+   * Title field in *TitleBlock → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: title_block.primary.title
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  title: prismic.RichTextField;
+}
+/**
+ * Default variation for TitleBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TitleBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TitleBlockSliceDefaultPrimary>,
+  never
+>;
+/**
+ * Slice variation for *TitleBlock*
+ *
+ */
+type TitleBlockSliceVariation = TitleBlockSliceDefault;
+/**
+ * TitleBlock Shared Slice
+ *
+ * - **API ID**: `title_block`
+ * - **Description**: `TitleBlock`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TitleBlockSlice = prismic.SharedSlice<
+  "title_block",
+  TitleBlockSliceVariation
+>;
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -368,10 +463,18 @@ declare module "@prismicio/client" {
       ArticeListingSliceDefault,
       ArticeListingSliceVariation,
       ArticeListingSlice,
+      ImageBlockSliceDefaultPrimary,
+      ImageBlockSliceDefault,
+      ImageBlockSliceVariation,
+      ImageBlockSlice,
       ParagraphSliceDefaultPrimary,
       ParagraphSliceDefault,
       ParagraphSliceVariation,
       ParagraphSlice,
+      TitleBlockSliceDefaultPrimary,
+      TitleBlockSliceDefault,
+      TitleBlockSliceVariation,
+      TitleBlockSlice,
     };
   }
 }
