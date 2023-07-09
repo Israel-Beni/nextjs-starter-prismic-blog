@@ -2,10 +2,7 @@ import React, { FC } from 'react';
 import { PrismicNextImage } from '@prismicio/next';
 
 import type { ImageField } from '@prismicio/client';
-
-interface MyPrismicImageProps {
-    field: ImageField;
-};
+import type { PrismicNextImageProps } from '@prismicio/next';
 
 /**
  * MyPrismicImage Component
@@ -15,7 +12,7 @@ interface MyPrismicImageProps {
  *
  * @component
  */
-function MyPrismicImage({field, ...restProps}: MyPrismicImageProps ): JSX.Element {
+function MyPrismicImage({field, ...restProps}: PrismicNextImageProps ): JSX.Element {
     return <PrismicNextImage field={field} {...restProps} />;
 }
 

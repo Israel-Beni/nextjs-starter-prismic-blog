@@ -121,6 +121,17 @@ interface BlogpostDocumentData {
    */
   publish_date: prismic.DateField;
   /**
+   * Thumbnail field in *BlogPost*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogpost.thumbnail
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  thumbnail: prismic.ImageField<never>;
+  /**
    * Slice Zone field in *BlogPost*
    *
    * - **Field Type**: Slice Zone
