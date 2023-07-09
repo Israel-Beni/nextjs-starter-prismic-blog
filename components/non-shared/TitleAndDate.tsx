@@ -1,17 +1,10 @@
 import React from "react";
-import { MySliceZone, MyPrismicText } from "@/facades";
-import { getReusableCustomType } from "@/api";
-
-import { checkObjectStructure } from "@/types";
-import type { PageDocument } from "@/prismicio-types";
-import type { DateField, Slice } from "@prismicio/client";
-import ContactForm from "@/components/non-shared/ContactForm";
-import Link from "next/link";
-import styles from "@/assets/styles/pages/articlesSlug.module.scss";
+import { MyPrismicText } from "@/facades";
+import styles from "@/assets/styles/components/titleAndDate.module.scss";
 import { libre_baskerville as lb } from "@/utils/fonts";
 import { formateDate } from "@/utils";
 
-import type { ArticleDocumentData } from "@/prismicio-types";
+import type { DateField } from "@prismicio/client";
 import type { RichTextField } from "@prismicio/client";
 
 interface TitleAndDateProps {

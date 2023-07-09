@@ -10,7 +10,7 @@
       "name": {
         "type": "Text",
         "config": { "label": "Name", "placeholder": "" }
-      },     
+      },
       "link": {
         "type": "Link",
         "config": {

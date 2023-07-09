@@ -96,6 +96,98 @@ export type AuthorDocument<Lang extends string = string> =
     "author",
     Lang
   >;
+/** Content for BlogPost documents */
+interface BlogpostDocumentData {
+  /**
+   * Title field in *BlogPost*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogpost.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  title: prismic.RichTextField;
+  /**
+   * Publish Date field in *BlogPost*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogpost.publish_date
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/date
+   *
+   */
+  publish_date: prismic.DateField;
+  /**
+   * Slice Zone field in *BlogPost*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogpost.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+   *
+   */
+  slices: prismic.SliceZone<BlogpostDocumentDataSlicesSlice>;
+  /**
+   * Meta Description field in *BlogPost*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: blogpost.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  meta_description: prismic.RichTextField;
+  /**
+   * Meta Image field in *BlogPost*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogpost.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  meta_image: prismic.ImageField<never>;
+  /**
+   * Meta Title field in *BlogPost*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: blogpost.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  meta_title: prismic.KeyTextField;
+}
+/**
+ * Slice for *BlogPost → Slice Zone*
+ *
+ */
+type BlogpostDocumentDataSlicesSlice =
+  | TitleBlockSlice
+  | ParagraphSlice
+  | ImageBlockSlice;
+/**
+ * BlogPost document from Prismic
+ *
+ * - **API ID**: `blogpost`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BlogpostDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<BlogpostDocumentData>,
+    "blogpost",
+    Lang
+  >;
 /** Content for Menu Item documents */
 interface MenuItemDocumentData {
   /**
@@ -250,6 +342,7 @@ export type PageDocument<Lang extends string = string> =
 export type AllDocumentTypes =
   | ArticleDocument
   | AuthorDocument
+  | BlogpostDocument
   | MenuItemDocument
   | NavigationDocument
   | PageDocument;
@@ -298,36 +391,6 @@ type ArticeListingSliceVariation = ArticeListingSliceDefault;
 export type ArticeListingSlice = prismic.SharedSlice<
   "artice_listing",
   ArticeListingSliceVariation
->;
-/**
- * Default variation for ContactForm Slice
- *
- * - **API ID**: `default`
- * - **Description**: `Default`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type ContactFormSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Record<string, never>,
-  never
->;
-/**
- * Slice variation for *ContactForm*
- *
- */
-type ContactFormSliceVariation = ContactFormSliceDefault;
-/**
- * ContactForm Shared Slice
- *
- * - **API ID**: `contact_form`
- * - **Description**: `ContactForm`
- * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
- *
- */
-export type ContactFormSlice = prismic.SharedSlice<
-  "contact_form",
-  ContactFormSliceVariation
 >;
 /**
  * Primary content in ImageBlock → Primary
@@ -490,6 +553,9 @@ declare module "@prismicio/client" {
       ArticleDocument,
       AuthorDocumentData,
       AuthorDocument,
+      BlogpostDocumentData,
+      BlogpostDocumentDataSlicesSlice,
+      BlogpostDocument,
       MenuItemDocumentData,
       MenuItemDocument,
       NavigationDocumentData,
@@ -503,9 +569,6 @@ declare module "@prismicio/client" {
       ArticeListingSliceDefault,
       ArticeListingSliceVariation,
       ArticeListingSlice,
-      ContactFormSliceDefault,
-      ContactFormSliceVariation,
-      ContactFormSlice,
       ImageBlockSliceDefaultPrimary,
       ImageBlockSliceDefault,
       ImageBlockSliceVariation,
