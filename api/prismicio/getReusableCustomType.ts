@@ -2,7 +2,7 @@ import 'server-only';
 import { createMyClient } from '@/facades';
 import { ReusableTypeDocument } from '@/types';
 
-export const getReusableCustomType = async (documentType: 'page' | 'article' | 'menu_item', uid: string, params?: any): Promise<ReusableTypeDocument | null> => {
+export const getReusableCustomType = async (documentType: 'page' | 'article' | 'menu_item' | 'blogpost', uid: string, params?: any): Promise<ReusableTypeDocument | null> => {
     const client = createMyClient();
 
     try {

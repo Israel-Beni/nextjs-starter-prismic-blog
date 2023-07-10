@@ -1,0 +1,59 @@
+.contactForm {
+    padding: 2rem 1rem;
+
+    @media (min-width: 768px) {
+        padding: 2.5rem 1.5rem;
+    }
+
+    @media (min-width: 1024px) {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 36rem;
+        margin: auto;
+
+        .form {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 1.5rem;
+
+            .label {
+                font-size: 0.875rem;
+                line-height: 1.25rem;
+                color: #64748b;
+            }
+
+            .field {
+                padding-top: 0.75rem;
+                padding-bottom: 0.75rem;
+                padding-left: 0.75rem;
+                padding-right: 1.75rem;
+                border-radius: 0;
+                border-width: 0;
+                border: 0 solid #e2e8f0;
+                border-bottom-width: 1px;
+                width: 100%;
+                color: #1e293b;
+
+                &::placeholder {
+                    color: #94a3b8;
+                }
+            }
+
+            .submit {
+                display: inline-flex;
+                gap: 0.5rem;
+                align-items: center;
+                margin-left: auto;
+
+                .buttonText {
+                    font-size: 1.25rem;
+                    line-height: 1.75rem;
+                }
+            }
+        }
+    }
+}

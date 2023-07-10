@@ -96,6 +96,109 @@ export type AuthorDocument<Lang extends string = string> =
     "author",
     Lang
   >;
+/** Content for BlogPost documents */
+interface BlogpostDocumentData {
+  /**
+   * Title field in *BlogPost*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogpost.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  title: prismic.RichTextField;
+  /**
+   * Publish Date field in *BlogPost*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogpost.publish_date
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/date
+   *
+   */
+  publish_date: prismic.DateField;
+  /**
+   * Thumbnail field in *BlogPost*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogpost.thumbnail
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  thumbnail: prismic.ImageField<never>;
+  /**
+   * Slice Zone field in *BlogPost*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogpost.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+   *
+   */
+  slices: prismic.SliceZone<BlogpostDocumentDataSlicesSlice>;
+  /**
+   * Meta Description field in *BlogPost*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: blogpost.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  meta_description: prismic.RichTextField;
+  /**
+   * Meta Image field in *BlogPost*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: blogpost.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  meta_image: prismic.ImageField<never>;
+  /**
+   * Meta Title field in *BlogPost*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: blogpost.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  meta_title: prismic.KeyTextField;
+}
+/**
+ * Slice for *BlogPost → Slice Zone*
+ *
+ */
+type BlogpostDocumentDataSlicesSlice =
+  | TitleBlockSlice
+  | ParagraphSlice
+  | ImageBlockSlice;
+/**
+ * BlogPost document from Prismic
+ *
+ * - **API ID**: `blogpost`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type BlogpostDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<BlogpostDocumentData>,
+    "blogpost",
+    Lang
+  >;
 /** Content for Menu Item documents */
 interface MenuItemDocumentData {
   /**
@@ -232,7 +335,10 @@ interface PageDocumentData {
  * Slice for *Page → Slice Zone*
  *
  */
-type PageDocumentDataSlicesSlice = ParagraphSlice;
+type PageDocumentDataSlicesSlice =
+  | ParagraphSlice
+  | TitleBlockSlice
+  | ImageBlockSlice;
 /**
  * Page document from Prismic
  *
@@ -247,6 +353,7 @@ export type PageDocument<Lang extends string = string> =
 export type AllDocumentTypes =
   | ArticleDocument
   | AuthorDocument
+  | BlogpostDocument
   | MenuItemDocument
   | NavigationDocument
   | PageDocument;
@@ -297,6 +404,62 @@ export type ArticeListingSlice = prismic.SharedSlice<
   ArticeListingSliceVariation
 >;
 /**
+ * Primary content in ImageBlock → Primary
+ *
+ */
+interface ImageBlockSliceDefaultPrimary {
+  /**
+   * Image field in *ImageBlock → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_block.primary.image
+   * - **Documentation**: https://prismic.io/docs/core-concepts/image
+   *
+   */
+  image: prismic.ImageField<never>;
+  /**
+   * Caption field in *ImageBlock → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_block.primary.caption
+   * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+   *
+   */
+  caption: prismic.KeyTextField;
+}
+/**
+ * Default variation for ImageBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ImageBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ImageBlockSliceDefaultPrimary>,
+  never
+>;
+/**
+ * Slice variation for *ImageBlock*
+ *
+ */
+type ImageBlockSliceVariation = ImageBlockSliceDefault;
+/**
+ * ImageBlock Shared Slice
+ *
+ * - **API ID**: `image_block`
+ * - **Description**: `ImageBlock`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ImageBlockSlice = prismic.SharedSlice<
+  "image_block",
+  ImageBlockSliceVariation
+>;
+/**
  * Primary content in Paragraph → Primary
  *
  */
@@ -342,6 +505,52 @@ export type ParagraphSlice = prismic.SharedSlice<
   "paragraph",
   ParagraphSliceVariation
 >;
+/**
+ * Primary content in TitleBlock → Primary
+ *
+ */
+interface TitleBlockSliceDefaultPrimary {
+  /**
+   * Title field in *TitleBlock → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: title_block.primary.title
+   * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+   *
+   */
+  title: prismic.RichTextField;
+}
+/**
+ * Default variation for TitleBlock Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Default`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TitleBlockSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TitleBlockSliceDefaultPrimary>,
+  never
+>;
+/**
+ * Slice variation for *TitleBlock*
+ *
+ */
+type TitleBlockSliceVariation = TitleBlockSliceDefault;
+/**
+ * TitleBlock Shared Slice
+ *
+ * - **API ID**: `title_block`
+ * - **Description**: `TitleBlock`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type TitleBlockSlice = prismic.SharedSlice<
+  "title_block",
+  TitleBlockSliceVariation
+>;
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -355,6 +564,9 @@ declare module "@prismicio/client" {
       ArticleDocument,
       AuthorDocumentData,
       AuthorDocument,
+      BlogpostDocumentData,
+      BlogpostDocumentDataSlicesSlice,
+      BlogpostDocument,
       MenuItemDocumentData,
       MenuItemDocument,
       NavigationDocumentData,
@@ -368,10 +580,18 @@ declare module "@prismicio/client" {
       ArticeListingSliceDefault,
       ArticeListingSliceVariation,
       ArticeListingSlice,
+      ImageBlockSliceDefaultPrimary,
+      ImageBlockSliceDefault,
+      ImageBlockSliceVariation,
+      ImageBlockSlice,
       ParagraphSliceDefaultPrimary,
       ParagraphSliceDefault,
       ParagraphSliceVariation,
       ParagraphSlice,
+      TitleBlockSliceDefaultPrimary,
+      TitleBlockSliceDefault,
+      TitleBlockSliceVariation,
+      TitleBlockSlice,
     };
   }
 }

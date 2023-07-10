@@ -31,8 +31,6 @@ async function Navigation(): Promise<JSX.Element> {
 
   setMenuItems();
 
-  console.log('menuItems', menuItems);
-
   const renderMenuItems = () => {
     if (menuItems.length > 0)
       return menuItems.map((menuItem, i) => {

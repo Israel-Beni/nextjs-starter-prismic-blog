@@ -6,6 +6,7 @@ import { getReusableCustomType } from "@/api";
 import { checkObjectStructure } from "@/types";
 import type { PageDocument } from "@/prismicio-types";
 import type { Slice } from "@prismicio/client";
+import ContactForm from "@/components/non-shared/ContactForm";
 
 interface SlugProps {
     params: {
@@ -22,6 +23,7 @@ async function Slug({ params }: SlugProps): Promise<JSX.Element> {
     return (
         <>
             <MySliceZone slices={slices} />
+            <ContactForm />
         </>
     );
 }

@@ -1,0 +1,20 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Incididunt cillum ex magna anim qui consectetur et ut nulla ex dolore adipisicing velit dolore. Adipisicing cupidatat elit anim ipsum sunt voluptate dolore duis mollit dolor eu mollit duis."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

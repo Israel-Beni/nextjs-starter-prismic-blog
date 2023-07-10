@@ -1,4 +1,3 @@
-import 'server-only';
 import { createMyClient } from '@/facades';
 import { SingleTypeDocument } from '@/types';
 
