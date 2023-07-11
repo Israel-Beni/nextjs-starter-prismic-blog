@@ -15,24 +15,22 @@ interface ArticleListingProps {
 
 function ArticleListing({ articleData }: ArticleListingProps): JSX.Element {
     let slices: Slice[] = articleData?.slices ? articleData.slices : [];
-    console.log("slices", slices);
+    // Constructing the value of "image" variable
     const image = articleData.thumbnail.url
         ? articleData.thumbnail
         : slices.find((slice) => slice.slice_type === "image_block")?.primary
               .image;
     let description: string = "";
+    // Construction the value of "description" variable
     slices.forEach((slice) => {
-        console.log('slice type', slice.slice_type);
-        if (
-            description.length < 299 &&
-            slice.slice_type === "paragragh" &&
-            isFilled.richText(slice.primary.text as RichTextField)
-        )
-            description.concat(asText(slice.primary.text as RichTextField));
-        description.substring(299);
+        const textObject = slice.primary.text as RichTextField;
+        const text = asText(textObject);
+        if (slice.slice_type === "paragraph" && isFilled.richText(textObject)) {
+            description = description.concat(text).substring(0, 295);
+            description.length > 294 &&
+                (description = description.concat("..."));
+        }
     });
-
-    console.log('description', description);
 
     return (
         <li className={styles.articlesListing}>
@@ -53,7 +51,6 @@ function ArticleListing({ articleData }: ArticleListingProps): JSX.Element {
             <div className={styles.textArea}>
                 <h2 className={styles.title}>
                     <Link href="/articles/hiking-through-the-woods">
-                        Hiking through the wood
                         {isFilled.richText(articleData.title) && (
                             <MyPrismicText field={articleData.title} />
                         )}
@@ -69,12 +66,6 @@ function ArticleListing({ articleData }: ArticleListingProps): JSX.Element {
                     className={`${libre_baskerville.className} ${styles.description}`}
                 >
                     {description}
-                    This is Rich Text, which includes both external links and
-                    links to internal documents. Links should be handled
-                    intelligently or everything might break. Don&#39;t forget
-                    about media, too! Do your best to render images using an
-                    HTML Serializer. As you know hiking can be a very fulfilling
-                    orem ipsum dolor…
                 </p>
             </div>
         </li>
