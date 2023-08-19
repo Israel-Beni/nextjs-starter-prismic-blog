@@ -1,11 +1,13 @@
 import React from "react";
 import Link from "next/link";
-import { MyPrismicLink, MyPrismicImage } from "@/facades";
+import { MyPrismicImage, MyPrismicText } from "@/facades";
 import styles from "@/assets/styles/components/articleListing.module.scss";
 import { libre_baskerville } from "@/utils/fonts";
+import { RichTextField, asText, isFilled } from "@prismicio/client";
 
 import type { BlogpostDocumentData } from "@/prismicio-types";
 import { ImageField, Slice } from "@prismicio/client";
+import { formateDate } from "@/utils";
 
 interface ArticleListingProps {
     articleData: BlogpostDocumentData;
@@ -13,14 +15,22 @@ interface ArticleListingProps {
 
 function ArticleListing({ articleData }: ArticleListingProps): JSX.Element {
     let slices: Slice[] = articleData?.slices ? articleData.slices : [];
-    console.log("slices", slices);
+    // Constructing the value of "image" variable
     const image = articleData.thumbnail.url
         ? articleData.thumbnail
-        : slices.find((slice) => {
-              console.log("slice type", slice.slice_type);
-              return slice.slice_type === "image_block";
-          })?.primary.image;
-    console.log("image", image);
+        : slices.find((slice) => slice.slice_type === "image_block")?.primary
+              .image;
+    let description: string = "";
+    // Construction the value of "description" variable
+    slices.forEach((slice) => {
+        const textObject = slice.primary.text as RichTextField;
+        const text = asText(textObject);
+        if (slice.slice_type === "paragraph" && isFilled.richText(textObject)) {
+            description = description.concat(text).substring(0, 295);
+            description.length > 294 &&
+                (description = description.concat("..."));
+        }
+    });
 
     return (
         <li className={styles.articlesListing}>
@@ -30,7 +40,7 @@ function ArticleListing({ articleData }: ArticleListingProps): JSX.Element {
                 href="/articles/hiking-through-the-woods"
             >
                 <div className={styles.imageWrapper}>
-                    {image && (
+                    {isFilled.image(image as ImageField) && (
                         <MyPrismicImage
                             field={image as ImageField}
                             className={styles.image}
@@ -41,23 +51,21 @@ function ArticleListing({ articleData }: ArticleListingProps): JSX.Element {
             <div className={styles.textArea}>
                 <h2 className={styles.title}>
                     <Link href="/articles/hiking-through-the-woods">
-                        Hiking through the wood
+                        {isFilled.richText(articleData.title) && (
+                            <MyPrismicText field={articleData.title} />
+                        )}
                     </Link>
                 </h2>
                 <p
                     className={`${libre_baskerville.className} ${styles.publishDate}`}
                 >
-                    Apr 12, 2022
+                    {isFilled.date(articleData.publish_date) &&
+                        formateDate(articleData.publish_date)}
                 </p>
                 <p
                     className={`${libre_baskerville.className} ${styles.description}`}
                 >
-                    This is Rich Text, which includes both external links and
-                    links to internal documents. Links should be handled
-                    intelligently or everything might break. Don&#39;t forget
-                    about media, too! Do your best to render images using an
-                    HTML Serializer. As you know hiking can be a very fulfilling
-                    orem ipsum dolor…
+                    {description}
                 </p>
             </div>
         </li>
